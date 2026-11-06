@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Práctica Integradora - Análisis de Ventas</title>
+    <link rel="stylesheet" href="estilos.css">
+</head>
+<body>
+    <header>
+        <h1>Análisis de Ventas 2024-2025</h1>
+        <p><strong>Curso:</strong> Práctica Integradora | <strong>Autor:</strong> [Escribe tu nombre aquí] | <strong>Grupo:</strong> [Tu grupo] | <strong>Fecha:</strong> Noviembre 2026</p>
+    </header>
+
+    <nav>
+        <a href="#pregunta">Pregunta y KPIs</a>
+        <a href="#metodologia">Metodología</a>
+        <a href="#resultados">Resultados</a>
+        <a href="#asociacion">Asociación</a>
+        <a href="#conclusiones">Conclusiones</a>
+    </nav>
+
+    <section id="pregunta">
+        <h2>Pregunta de negocio y KPIs</h2>
+        <p><strong>Decisión organizacional:</strong> Identificar qué categorías de producto y segmentos de cliente concentran las ventas para priorizar esfuerzos comerciales y de inventario en 2026.</p>
+        <p><strong>Usuario del tablero:</strong> Gerente comercial y equipo de planificación de ventas.</p>
+        <ul>
+            <li><strong>Ventas Totales:</strong> Suma del importe de todas las líneas de venta.</li>
+            <li><strong>Tickets:</strong> Número de transacciones únicas realizadas.</li>
+            <li><strong>Ticket Promedio:</strong> Ventas Totales divididas entre el número de Tickets.</li>
+        </ul>
+    </section>
+
+    <section id="metodologia">
+        <h2>Metodología y Modelo</h2>
+        <h3>Limpieza y Transformación (Power Query)</h3>
+        <p>Se cargaron los archivos CSV. Se cambiaron los tipos de datos (fechas y números), se eliminaron columnas innecesarias y se documentaron los nulos para asegurar la calidad de la información.</p>
+        <h3>Diagrama del Modelo Estrella</h3>
+        <img src="img/modelo.png" alt="Modelo Estrella">
+        <h3>Medidas DAX Implementadas</h3>
+        <ul>
+            <li><code>Ventas Totales</code>: SUM del Importe.</li>
+            <li><code>Tickets</code>: DISTINCTCOUNT de VentaID.</li>
+            <li><code>Ticket Promedio</code>: DIVIDE(Ventas Totales, Tickets).</li>
+            <li><code>Variación % vs Año Anterior</code>: Inteligencia de tiempo (SAMEPERIODLASTYEAR).</li>
+            <li><code>% Ventas por Categoria</code>: DIVIDE con ALL.</li>
+        </ul>
+    </section>
+
+    <section id="resultados">
+        <h2>Resultados del Informe (Power BI)</h2>
+        <figure>
+            <img src="img/pagina1.png" alt="Resumen Ejecutivo">
+            <figcaption>Página 1: Resumen ejecutivo con KPIs y tendencia mensual.</figcaption>
+        </figure>
+        <figure>
+            <img src="img/pagina2.png" alt="Desglose Comercial">
+            <figcaption>Página 2: Desglose comercial por región, categoría y segmento.</figcaption>
+        </figure>
+        <figure>
+            <img src="img/pagina3.png" alt="Tendencia Temporal">
+            <figcaption>Página 3: Análisis de tendencia temporal e inteligencia de tiempo.</figcaption>
+        </figure>
+        <figure>
+            <img src="img/pagina4.png" alt="Asociaciones">
+            <figcaption>Página 4: Visualización de asociaciones y hallazgos.</figcaption>
+        </figure>
+    </section>
+
+    <section id="asociacion">
+        <h2>Análisis de Asociación / Correlación</h2>
+        <p><strong>Correlación Numérica:</strong> Al analizar la relación entre los tickets por cliente y las ventas por cliente, se observa una asociación positiva (a mayor cantidad de transacciones, mayor suele ser el ingreso generado por el cliente).</p>
+        <p><strong>Correlación Categórica:</strong> La matriz de región vs categoría muestra que ciertas categorías (como Cómputo) tienen una mayor participación en regiones específicas (como Centro).</p>
+        <div style="background-color: #f8d7da; padding: 15px; border-left: 5px solid #dc3545; margin-top: 20px;">
+            <h3>Advertencia: Correlación ≠ Causalidad</h3>
+            <p>Los análisis presentados muestran asociación entre variables, no causalidad. Que un cliente con más tickets tenga mayores ventas no implica que aumentar los tickets <em>cause</em> más ventas. Los datos son sintéticos y observacionales, no provienen de un experimento controlado. No se puede afirmar causalidad sin un diseño experimental riguroso.</p>
+        </div>
+    </section>
+
+    <section id="conclusiones">
+        <h2>Conclusiones y Recomendaciones</h2>
+        <ol>
+            <li>La categoría Cómputo (Laptops y Monitores) representa el mayor porcentaje de los ingresos totales del negocio.</li>
+            <li>Existe una clara estacionalidad en las ventas, con una caída notable hacia el final del año en curso.</li>
+            <li>Los clientes de la región Centro y Occidente concentran la mayor cantidad de tickets y volumen de ventas.</li>
+            <li>Se recomienda enfocar campañas de fidelización en los clientes de Mayoreo, que aunque son pocos, generan compras de alto valor.</li>
+        </ol>
+        <p><a href="https://drive.google.com/file/d/1mlgcmHhogXKLzNaE6NCQJFbkBE29b4x4/view?usp=sharing" target="_blank" class="boton">Descargar archivo Power BI (.pbix)</a></p>
+    </section>
+
+    <footer>
+        <p>Práctica Integradora - Curso de Análisis de Datos</p>
+    </footer>
+</body>
+</html>
